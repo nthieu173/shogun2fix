@@ -1,5 +1,6 @@
 #  Running Total War Shogun 2 
 
+Copied from original Reddit post for archival purpose. Thanks for not letting a game die r/zargex.
 https://www.reddit.com/r/linux_gaming/comments/1844dfd/running_total_war_shogun_2/
 
 Tonight I was able to run Shogun 2 natively on Linux for first time. I got the game a couple of years ago but it never worked, and I tried with Proton too and it was very slow (and it crashed too).
