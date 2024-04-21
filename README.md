@@ -16,13 +16,11 @@ Note: I am using the flatpak version of Steam.
 
 Create a game.c file with this content:
 
-    ```
     #include <sys/mman.h>
     #include <unistd.h>
     #include <sys/syscall.h>
 
     int mprotect(void *addr, size_t len, int prot) { if (prot == PROT_EXEC) { prot |= PROT_READ; } return syscall(__NR_mprotect, addr, len, prot); }
-    ```
 
 4. The game is 32bit so you need to compile with gcc -m32 game.c -shared -o game.so
 
