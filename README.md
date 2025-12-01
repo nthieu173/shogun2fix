@@ -1,4 +1,88 @@
-#  Running Total War Shogun 2 
+#  Running Total War Shogun 2
+
+## Create the patch
+
+There's a few methods, just pick one:
+
+### Building on Podman
+
+Install [Podman](https://podman.io/docs/installation). Then, in this repository folder, run:
+```bash
+podman build --output type=local,dest=. .
+```
+
+This should create the file `libc_mprotect.so` in this folder.
+
+### Building on Docker
+
+Install [Docker](https://docs.docker.com/engine/install/). Then, in this repository folder, run:
+```bash
+docker build --output type=local,dest=. .
+```
+
+This should create the file `libc_mprotect.so` in this folder.
+
+### Building on Fedora
+
+Install 32-bit libaries:
+```bash
+sudo dnf install gcc libgcc.i686 glibc-devel.i686
+```
+
+Then, in this repository's folder, run the command:
+```bash
+gcc -m32 libc_mprotect.c -shared -o libc_mprotect.so
+```
+
+This should create the file `libc_mprotect.so` in this folder.
+
+#### Ubuntu
+
+Install 32-bit libaries:
+```bash
+sudo apt install gcc gcc-multilib
+```
+
+Then, in this repository's folder, run the command:
+```bash
+gcc -m32 libc_mprotect.c -shared -o libc_mprotect.so
+```
+
+This should create the file `libc_mprotect.so` in this folder.
+
+## Copy the file to the game folder
+
+After building `libc_mprotect.so` in the previous step, you find the game's folder in Steam:
+
+1. Right click the game in the sidebar.
+2. Select "Manage > Browse Local Files".
+3. Copy `libc_mprotect.so` from the previous step to the `lib` folder which should exists in the game's folder.
+
+## Create sim-links of all `.so` files in the `lib/i686` folder
+
+The game is looking for its own folder in the wrong place, so we have to help it.
+
+1. Go to the `lib` folder mentioned in the previous step.
+2. Open a terminal there and run the command:
+```bash
+for f in $(find i686 -maxdepth 1 -type f -name '*.so' -printf '%f\n'); do ln -s $f $f; done
+```
+
+## Add the launch option
+
+This tells the game to actually load the patch:
+
+1. Right click the game in the sidebar.
+2. Select "Properties".
+3. Paste the folowing to the "Launch Options" input box:
+```bash
+LD_PRELOAD="\$ORIGIN/../lib/libc_mprotect.so" %command%`
+```
+
+## Done
+Just launch the game normally!
+
+Also, you can check out [Shogun2-Linux-Fix](https://github.com/GitoMat/Shogun2-Linux-Fix) which also fixes this, though from my observation, the `libc_dlopen_mode.so` fix doesn't seems to be neccessary.
 
 ## Original Post
 Copied from original Reddit post for archival purpose. Thanks for not letting a game die r/zargex.
