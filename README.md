@@ -76,7 +76,7 @@ This tells the game to actually load the patch:
 2. Select "Properties".
 3. Paste the folowing to the "Launch Options" input box:
 ```bash
-LD_PRELOAD="\$ORIGIN/../lib/libc_mprotect.so" %command%`
+LD_PRELOAD="\$ORIGIN/../lib/libc_mprotect.so" %command%
 ```
 
 ## Done
