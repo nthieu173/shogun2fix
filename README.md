@@ -79,6 +79,13 @@ This tells the game to actually load the patch:
 LD_PRELOAD="\$ORIGIN/../lib/libc_mprotect.so" %command%
 ```
 
+## Use the Steam Linux Runtime
+
+Still in Properties:
+1. Go to "Compatibiliy".
+2. Check "Force the use of a specific Steam Play compatibility tool".
+3. Select "Steam Linux Runtime 1.0 (scout)".
+
 ## Done
 Just launch the game normally!
 
