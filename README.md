@@ -36,7 +36,7 @@ gcc -m32 libc_mprotect.c -shared -o libc_mprotect.so
 
 This should create the file `libc_mprotect.so` in this folder.
 
-#### Ubuntu
+### Building on Ubuntu
 
 Install 32-bit libaries:
 ```bash
