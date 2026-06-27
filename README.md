@@ -31,7 +31,7 @@ sudo dnf install gcc libgcc.i686 glibc-devel.i686
 
 Then, in this repository's folder, run the command:
 ```bash
-gcc -m32 libc_mprotect.c -shared -o libc_mprotect.so
+gcc -m32 -fPIC libc_mprotect.c -shared -o libc_mprotect.so
 ```
 
 This should create the file `libc_mprotect.so` in this folder.
@@ -45,7 +45,7 @@ sudo apt install gcc gcc-multilib
 
 Then, in this repository's folder, run the command:
 ```bash
-gcc -m32 libc_mprotect.c -shared -o libc_mprotect.so
+gcc -m32 -fPIC libc_mprotect.c -shared -o libc_mprotect.so
 ```
 
 This should create the file `libc_mprotect.so` in this folder.
@@ -56,7 +56,7 @@ After building `libc_mprotect.so` in the previous step, you find the game's fold
 
 1. Right click the game in the sidebar.
 2. Select "Manage > Browse Local Files".
-3. Copy `libc_mprotect.so` from the previous step to the `lib` folder which should exists in the game's folder.
+3. Copy `libc_mprotect.so` from the previous step to the `lib` folder which should exist in the game's folder.
 
 ## Create sim-links of all `.so` files in the `lib/i686` folder
 

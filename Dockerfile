@@ -1,4 +1,4 @@
-FROM ubuntu:noble AS build
+FROM ubuntu:resolute AS build
 
 RUN apt-get update && apt-get install -y \
     gcc \
@@ -9,7 +9,7 @@ WORKDIR /shogun
 
 COPY libc_mprotect.c .
 
-RUN gcc -m32 -shared -o libc_mprotect.so \
+RUN gcc -m32 -fPIC -shared -o libc_mprotect.so \
     libc_mprotect.c
 
 FROM scratch AS export
