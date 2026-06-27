@@ -58,14 +58,14 @@ After building `libc_mprotect.so` in the previous step, you find the game's fold
 2. Select "Manage > Browse Local Files".
 3. Copy `libc_mprotect.so` from the previous step to the `lib` folder which should exist in the game's folder.
 
-## Create sim-links of all `.so` files in the `lib/i686` folder
+## Create symlinks for the shared libraries in the `lib/i686` folder
 
 The game is looking for its own folder in the wrong place, so we have to help it.
 
 1. Go to the `lib` folder mentioned in the previous step.
 2. Open a terminal there and run the command:
 ```bash
-for f in $(find i686 -maxdepth 1 -type f -name '*.so' -printf '%f\n'); do ln -s $f $f; done
+for f in i686/*.so*; do ln -sfn "$f" "$(basename "$f")"; done
 ```
 
 ## Add the launch option
