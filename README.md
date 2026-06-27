@@ -67,6 +67,24 @@ The game is looking for its own folder in the wrong place, so we have to help it
 ```bash
 for f in i686/*.so*; do ln -sfn "$f" "$(basename "$f")"; done
 ```
+3. You should see something like this is you run `ls -l`:
+```
+total 64
+drwxr-xr-x. 1 hieu hieu   336 Jun 25 23:02 i686
+lrwxrwxrwx. 1 hieu hieu    14 Jun 26 17:08 libcef.so -> i686/libcef.so
+-rwxr-xr-x. 1 hieu hieu 10800 Jun 26 17:00 libc_mprotect.so
+lrwxrwxrwx. 1 hieu hieu    20 Jun 26 17:08 libcrypto.so.36 -> i686/libcrypto.so.36
+lrwxrwxrwx. 1 hieu hieu    17 Jun 26 17:08 libcurl.so.4 -> i686/libcurl.so.4
+lrwxrwxrwx. 1 hieu hieu    20 Jun 26 17:08 libMilesMidi.so -> i686/libMilesMidi.so
+lrwxrwxrwx. 1 hieu hieu    16 Jun 26 17:08 libMiles.so -> i686/libMiles.so
+lrwxrwxrwx. 1 hieu hieu    14 Jun 26 17:08 libpdf.so -> i686/libpdf.so
+lrwxrwxrwx. 1 hieu hieu    21 Jun 26 17:08 libSDL2-2.0.5.so -> i686/libSDL2-2.0.5.so
+lrwxrwxrwx. 1 hieu hieu    27 Jun 26 17:08 libSDL2_image-2.0.1.so -> i686/libSDL2_image-2.0.1.so
+lrwxrwxrwx. 1 hieu hieu    17 Jun 26 17:08 libssl.so.37 -> i686/libssl.so.37
+lrwxrwxrwx. 1 hieu hieu    20 Jun 26 17:08 libsteam_api.so -> i686/libsteam_api.so
+lrwxrwxrwx. 1 hieu hieu    16 Jun 26 17:08 libtbb.so.2 -> i686/libtbb.so.2
+-rwxr-xr-x. 1 hieu hieu  6813 Jun 25 23:02 private_symbol_hack.so
+```
 
 ## Add the launch option
 
